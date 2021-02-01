@@ -5,12 +5,12 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Driver Search</title>
+	<title>Driver EDIT</title>
 </head>
 <body>
 	<form action="/add" method="post">
 		<div style="width:600px;height:auto;">
-			<h1>DRIVER DATABASE ADD</h1>		
+			<h1>EDIT DRIVER</h1>		
 			<div style="width:49%;height:auto;float:left;">
 				<p style="color:blue;font-weight:bold;">${success}</p>
 				<p>Driver ID:<input type="text" name="driverId" placeholder="1234567" value="${driverId}"/></p>
@@ -49,10 +49,10 @@
 				  <option value="female" <% if(female){out.println("SELECTED");} %>>Female</option>
 				  <option value="other" <% if(other){out.println("SELECTED");} %>>Other</option>
 				</select></p>
-				<input type="hidden" name="operation" value="add"/>
-				<input type="hidden" name="trueId" value=""/>
-				<input type="submit" value="Add"/>
-				<a href="/search" style="border:1px solid black;border-radius:3px;background-color:gray;padding:5px;color:black;">Back To Search</a>
+				<input type="hidden" name="operation" value="edit"/>
+				<input type="hidden" name="trueId" value="${driverId}"/>
+				<input type="submit" value="Update"/>
+				<a href="/search" style="border:1px solid black;border-radius:3px;background-color:gray;padding:5px;color:black;">Cancel</a>
 			</div>
 			<div style="width:49%;height:auto;float:right;">
 				<c:forEach var="error" items="${errors}">
