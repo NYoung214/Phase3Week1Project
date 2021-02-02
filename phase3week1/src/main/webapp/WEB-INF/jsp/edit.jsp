@@ -23,11 +23,11 @@
 				<p>Address:<input type="text" name="address" placeholder="123 Sesame Street" value="${address}"/></p>
 				<p>City:<input type="text" name="city" placeholder="Denver" value="${city}"/></p>
 				<p>State:<input type="text" name="state" placeholder="CO" value="${state}"/></p>
-				<p>Zip Code:<input type="text" name="zip" placeholder="12345" value="${zip}"/></p>
+				<p>ZIP Code:<input type="text" name="zip" placeholder="12345" value="${zip}"/></p>
 					<%
 					boolean male =false, female =false, other =false;
-					if(!(request.getParameter("sex")==null)){
-						String check = request.getParameter("sex");
+					if(request.getAttribute("sex")!=null){
+						String check = (String) request.getAttribute("sex");
 						switch(check){
 						case "male":
 							male = true;
@@ -44,10 +44,10 @@
 					}
 					%>
 				
-				<p>Sex:<select name="sex"">
-				  <option value="male" <% if(male){out.println("SELECTED");} %>>Male</option>
-				  <option value="female" <% if(female){out.println("SELECTED");} %>>Female</option>
-				  <option value="other" <% if(other){out.println("SELECTED");} %>>Other</option>
+				<p>Sex:<select name="sex">
+				  <option value="male" <% if(male){out.println("selected");} %>>Male</option>
+				  <option value="female" <% if(female){out.println("selected");} %>>Female</option>
+				  <option value="other" <% if(other){out.println("selected");} %>>Other</option>
 				</select></p>
 				<input type="hidden" name="operation" value="edit"/>
 				<input type="hidden" name="trueId" value="${driverId}"/>

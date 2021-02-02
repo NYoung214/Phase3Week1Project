@@ -119,7 +119,7 @@ public class DriverController {
 		logger.info("Operation: "+operation+"... attempting to validate submitted fields...");
 		errors = DriverService.validate(fields);
 
-		if(errors.isEmpty() && operation.equals("edit") && driverDao.existsById(Integer.parseInt(driverId))) {
+		if(errors.isEmpty() && operation.equals("edit") && driverDao.existsById(Integer.parseInt(driverId)) && !driverId.equals(trueId)) {
 			errors.add("Driver ID already in use");
 		}
 		
@@ -181,9 +181,9 @@ public class DriverController {
 		driverDao.save(driver);
 		
 		if(operation.equals("edit")) {
-			logger.info("driver updated in database succesfully, returning to edit.jsp");
+			logger.info("driver updated in database succesfully, returning to search.jsp");
 			map.addAttribute("success","Driver Successfully Updated");
-			return "edit.jsp";
+			return "search.jsp";
 		}
 		logger.info("new driver saved in database succesfully, returning to add.jsp");
 		map.addAttribute("success","New Driver Successfully Added");

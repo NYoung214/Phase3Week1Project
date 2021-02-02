@@ -4,17 +4,18 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Driver sEARCH</title>
+	<title>Driver Search</title>
 </head>
 <body>
 	<form action="/search" method="post">
 		<h1>DRIVER DATABASE SEARCH</h1>
+		<p style="color:blue;font-weight:bold;">${success}</p>
 		<p>Driver ID:<input type="text" name="driverId" placeholder="1234567"/>
 		
 		<%
 		boolean edit =false, search =false;
-		if(!(request.getParameter("option")==null)){
-			String check = request.getParameter("option");
+		if(!(request.getAttribute("option")==null)){
+			String check = (String) request.getAttribute("option");
 			switch(check){
 			case "edit":
 				edit = true;
